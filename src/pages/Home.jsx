@@ -162,7 +162,7 @@ export default function Home() {
   padding: '10px 0' 
 }}>
   {[
-    '/images/baklawa.png', '/images/tabe3telya2.png', '/images/3rayesh1.png', '/images/eidsable.png',
+    '/images/baklawa.png', '/images/tabe3telya2.png', '/images/meshewek2.png', '/images/eidsable.png',
     '/images/makroutLouz2.png', '/images/k3ik3at.png', '/images/khokh2.png', '/images/bniwen2.png'
   ].map((imgSrc, i) => (
     <div 
@@ -222,90 +222,272 @@ export default function Home() {
         `}</style>
       </section>
 
-      {/* ── OFFRE DE LA SEMAINE ── */}
-      <section style={{ background: 'white', padding: '100px 0', position: 'relative' }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(to right,transparent,var(--rose-light),transparent)' }} />
-        <div className="container">
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 48, flexWrap: 'wrap', gap: 24 }}>
-            <div>
-              <div className="section-label">Offre spéciale</div>
-              <h2 className="section-title">Gâteau de <em>la semaine</em></h2>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-muted)', marginBottom: 10 }}>Se termine dans</div>
-              <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-                {[['h', h], ['m', m], ['s', s]].map(([u, v], i) => (
-                  <div key={u} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{ fontFamily: 'Playfair Display, serif', fontSize: 36, lineHeight: 1, color: 'var(--ink)' }}>
-                        {String(v).padStart(2, '0')}
-                      </div>
-                      <div style={{ fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink-muted)' }}>{u}</div>
-                    </div>
-                    {i < 2 && <span style={{ fontFamily: 'Playfair Display, serif', fontSize: 28, color: 'var(--rose)', marginBottom: 14 }}>:</span>}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+     {/* ── OFFRE DE LA SEMAINE ── */}
+<section style={{ background: 'white', padding: 'clamp(60px,8vw,100px) 0', position: 'relative' }}>
+  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(to right,transparent,var(--rose-light),transparent)' }} />
+  <div className="container">
 
-          <div className="card" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr' }}><div style={{ overflow: 'hidden', minHeight: 280 }}>
-  <img src="/images/baklawa.png" alt="Baklawa Royale" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-</div>
-            <div style={{ padding: '40px 36px' }}>
-              <span style={{ background: 'var(--rose)', color: 'white', fontSize: 11, padding: '4px 14px', borderRadius: 'var(--radius-full)', fontWeight: 500 }}>
-                ★ Bestseller — 20% de réduction
-              </span>
-              <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: 36, marginTop: 16, marginBottom: 10 }}>
-                Baklawa <em style={{ color: 'var(--rose-dark)' }}>Royale</em>
-              </h3>
-              <p style={{ fontSize: 14, color: 'var(--ink-muted)', lineHeight: 1.8, marginBottom: 20 }}>
-                Pâte fine au beurre clarifié, farce d'amandes parfumée à la fleur d'oranger, sirop ambré. La recette signature de Farah Sucré.
-              </p>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 24 }}>
-                <span style={{ fontSize: 18, color: 'var(--ink-muted)', textDecoration: 'line-through', opacity: 0.5 }}>250 DA</span>
-                <span style={{ fontFamily: 'Playfair Display, serif', fontSize: 42, color: 'var(--rose-dark)' }}>200 DA</span>
-                <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>/ 1 pièce</span>
-              </div>
-              <Link to="/halwas" className="btn btn-primary" style={{ fontSize: 14, padding: '12px 28px' }}>
-                Voir et commander <ArrowRight size={15} />
-              </Link>
-            </div>
-          </div>
+    {/* Header : titre + countdown empilés sur mobile, côte à côte sur desktop */}
+    <div style={{
+      display: 'flex',
+      alignItems: 'flex-end',
+      justifyContent: 'space-between',
+      marginBottom: 'clamp(28px,4vw,48px)',
+      flexWrap: 'wrap',
+      gap: 20,
+    }}>
+      <div>
+        <div className="section-label">Offre spéciale</div>
+        <h2 className="section-title">Gâteau de <em>la semaine</em></h2>
+      </div>
+
+      {/* Countdown */}
+      <div style={{ textAlign: 'center' }}>
+        <div style={{ fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink-muted)', marginBottom: 8 }}>
+          Se termine dans
         </div>
-      </section>
-
-      {/* ── NOS FAMILLES ── */}
-      <section style={{ background: 'var(--cream)', padding: '100px 0' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: 52 }}>
-            <div className="section-label">Nos créations</div>
-            <h2 className="section-title">Trois familles de <em>halwas</em></h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 2 }}>
-            {Object.entries(HALWA_TYPES).map(([key, { label, image }]) => (
-  <Link key={key} to={`/halwas?type=${key}`} style={{
-    background: 'white',
-    aspectRatio: '3/4',
-    display: 'flex', flexDirection: 'column',
-    alignItems: 'center', justifyContent: 'center',
-    gap: 12, position: 'relative', overflow: 'hidden',
-    transition: 'all 0.3s',
-    textDecoration: 'none',
-    border: '1px solid var(--border)'
-  }}
-  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-5px)' }}
-  onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)' }}>
-    <img src={image} alt={label} style={{ width: '100%', height: '70%', objectFit: 'cover' }} />
-    <div style={{ padding: '15px' }}>
-      <div style={{ fontFamily: 'Playfair Display, serif', fontSize: 20, color: 'var(--ink)', textAlign: 'center' }}>{label}</div>
-      <div style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--rose-dark)', textAlign: 'center', marginTop: 5 }}>Découvrir →</div>
+        <div style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+          {[['h', h], ['m', m], ['s', s]].map(([u, v], i) => (
+            <div key={u} style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <div style={{
+                background: 'var(--rose-pale)',
+                border: '1px solid var(--border)',
+                borderRadius: 8,
+                padding: '6px 10px',
+                textAlign: 'center',
+                minWidth: 48,
+              }}>
+                <div style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(22px,4vw,32px)', lineHeight: 1, color: 'var(--ink)' }}>
+                  {String(v).padStart(2, '0')}
+                </div>
+                <div style={{ fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink-muted)', marginTop: 2 }}>
+                  {u}
+                </div>
+              </div>
+              {i < 2 && (
+                <span style={{ fontFamily: 'Playfair Display, serif', fontSize: 22, color: 'var(--rose)', marginBottom: 14, padding: '0 2px' }}>:</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
-  </Link>
-))}
-          </div>
+
+    {/* Card : empilée sur mobile, grille sur desktop */}
+    <div className="card" style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+      overflow: 'hidden',
+    }}>
+
+      {/* Image — pleine largeur sur mobile */}
+      <div style={{
+        position: 'relative',
+        minHeight: 'clamp(220px, 40vw, 320px)',
+        overflow: 'hidden',
+        background: 'var(--rose-pale)',
+      }}>
+        <img
+          src="/images/baklawa.png"
+          alt="Baklawa Royale"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block',
+            position: 'absolute',
+            inset: 0,
+          }}
+        />
+        {/* Badge flottant sur l'image */}
+        <span style={{
+          position: 'absolute',
+          top: 14,
+          left: 14,
+          background: 'var(--rose)',
+          color: 'white',
+          fontSize: 11,
+          padding: '5px 14px',
+          borderRadius: 'var(--radius-full)',
+          fontWeight: 500,
+          backdropFilter: 'blur(4px)',
+        }}>
+          ★ Bestseller — 20% de réduction
+        </span>
+      </div>
+
+      {/* Contenu — padding adaptatif */}
+      <div style={{ padding: 'clamp(24px,5vw,40px) clamp(20px,4vw,36px)' }}>
+
+        <h3 style={{
+          fontFamily: 'Playfair Display, serif',
+          fontSize: 'clamp(26px,4vw,36px)',
+          marginBottom: 12,
+          lineHeight: 1.15,
+        }}>
+          Baklawa <em style={{ color: 'var(--rose-dark)' }}>Royale</em>
+        </h3>
+
+        <p style={{
+          fontSize: 'clamp(13px,1.8vw,14px)',
+          color: 'var(--ink-muted)',
+          lineHeight: 1.8,
+          marginBottom: 20,
+        }}>
+          Pâte fine au beurre clarifié, farce d'amandes parfumée à la fleur d'oranger, sirop ambré. La recette signature de Farah Sucré.
+        </p>
+
+        {/* Prix */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'baseline',
+          flexWrap: 'wrap',
+          gap: 10,
+          marginBottom: 24,
+        }}>
+          <span style={{ fontSize: 16, color: 'var(--ink-muted)', textDecoration: 'line-through', opacity: 0.5 }}>
+            250 DA
+          </span>
+          <span style={{
+            fontFamily: 'Playfair Display, serif',
+            fontSize: 'clamp(32px,5vw,42px)',
+            color: 'var(--rose-dark)',
+            lineHeight: 1,
+          }}>
+            200 DA
+          </span>
+          <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>/ 1 pièce</span>
         </div>
-      </section>
+
+        {/* Bouton full-width sur mobile */}
+        <Link
+          to="/halwas"
+          className="btn btn-primary"
+          style={{
+            fontSize: 14,
+            padding: '13px 28px',
+            width: '100%',
+            justifyContent: 'center',
+            maxWidth: 280,
+          }}
+        >
+          Voir et commander <ArrowRight size={15} />
+        </Link>
+      </div>
+    </div>
+
+  </div>
+</section>
+     {/* ── NOS FAMILLES ── */}
+<section style={{ background: 'var(--cream)', padding: 'clamp(60px,8vw,100px) 0' }}>
+  <div className="container">
+    <div style={{ textAlign: 'center', marginBottom: 'clamp(32px,5vw,52px)' }}>
+      <div className="section-label">Nos créations</div>
+      <h2 className="section-title">Trois familles de <em>halwas</em></h2>
+    </div>
+
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))',
+      gap: 'clamp(10px,2vw,16px)',
+    }}>
+      {Object.entries(HALWA_TYPES).map(([key, { label, image }]) => (
+        <Link
+          key={key}
+          to={`/halwas?type=${key}`}
+          style={{
+            background: 'white',
+            borderRadius: 'var(--radius-lg)',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+            border: '1px solid var(--border)',
+            textDecoration: 'none',
+            transition: 'all 0.3s ease',
+            boxShadow: 'var(--shadow-sm)',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.transform = 'translateY(-5px)'
+            e.currentTarget.style.boxShadow = 'var(--shadow-md)'
+            e.currentTarget.style.borderColor = 'var(--rose)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.transform = 'translateY(0)'
+            e.currentTarget.style.boxShadow = 'var(--shadow-sm)'
+            e.currentTarget.style.borderColor = 'var(--border)'
+          }}
+        >
+          {/* Image — hauteur fixe, bien cadrée */}
+          <div style={{
+            width: '100%',
+            aspectRatio: '4/3',        /* ratio stable sur tous écrans */
+            overflow: 'hidden',
+            position: 'relative',
+            background: 'var(--rose-pale)',
+          }}>
+            <img
+              src={image}
+              alt={label}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                position: 'absolute',
+                inset: 0,
+                display: 'block',
+                transition: 'transform 0.4s ease',
+              }}
+              onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+            />
+          </div>
+
+          {/* Contenu — padding généreux */}
+          <div style={{
+            padding: 'clamp(16px,3vw,22px)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 6,
+          }}>
+            <div style={{
+              fontFamily: 'Playfair Display, serif',
+              fontSize: 'clamp(17px,2.5vw,21px)',
+              color: 'var(--ink)',
+              lineHeight: 1.2,
+            }}>
+              {label}
+            </div>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+              <div style={{
+                fontSize: 11,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--rose-dark)',
+              }}>
+                Découvrir
+              </div>
+              <div style={{
+                width: 28, height: 28,
+                borderRadius: '50%',
+                background: 'var(--rose-pale)',
+                border: '1px solid var(--border)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'var(--rose-dark)',
+                fontSize: 14,
+              }}>→</div>
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ── BESTSELLERS ── */}
       <section style={{ background: 'white', padding: '100px 0' }}>
