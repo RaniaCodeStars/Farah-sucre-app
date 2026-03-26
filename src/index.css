@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --rose:          #F2A7BB;
+  --rose-light:    #FAD7E3;
+  --rose-pale:     #FFF0F5;
+  --rose-deep:     #E07A99;
+  --rose-dark:     #C25A7C;
+  --gold:          #C9A06A;
+  --gold-light:    #EDD9B8;
+  --cream:         #FFFAF8;
+  --white:         #FFFFFF;
+  --ink:           #2D1F27;
+  --ink-soft:      #5C4555;
+  --ink-muted:     #9E7E90;
+  --border:        rgba(242,167,187,0.25);
+  --border-strong: rgba(242,167,187,0.5);
+  --radius-sm:     8px;
+  --radius-md:     12px;
+  --radius-lg:     20px;
+  --radius-full:   9999px;
+  --shadow-sm:     0 2px 8px rgba(194,90,124,0.08);
+  --shadow-md:     0 8px 32px rgba(194,90,124,0.12);
+  --shadow-lg:     0 20px 60px rgba(194,90,124,0.16);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: 'DM Sans', sans-serif; cursor: pointer; }
+input, textarea, select { font-family: 'DM Sans', sans-serif; }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--rose-light); border-radius: 3px; }
+
+/* ─── Utilities ─── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 80px);
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--rose-dark);
+  margin-bottom: 14px;
+}
+.section-label::before,
+.section-label::after {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--rose);
+  display: inline-block;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.section-title em { font-style: italic; color: var(--rose-dark); }
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--rose);
+  color: white;
+  box-shadow: 0 4px 20px rgba(242,167,187,0.4);
+}
+.btn-primary:hover {
+  background: var(--rose-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(242,167,187,0.5);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink-soft);
+  border: 1.5px solid var(--border-strong);
+}
+.btn-outline:hover { background: var(--rose-pale); border-color: var(--rose); color: var(--rose-dark); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-muted);
+  border: none;
+  padding: 8px 16px;
+}
+.btn-ghost:hover { color: var(--rose-dark); }
+
+.btn-danger {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: none;
+}
+.btn-danger:hover { background: #FCA5A5; }
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ─── Card ─── */
+.card {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.card-padded { padding: 24px; }
+
+/* ─── Form ─── */
+.form-group { margin-bottom: 16px; }
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.form-input {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  font-size: 14px;
+  background: var(--rose-pale);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input:focus { border-color: var(--rose); }
+.form-input::placeholder { color: var(--ink-muted); }
+
+/* ─── Badge status ─── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ─── Spinner ─── */
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--rose-light);
+  border-top-color: var(--rose);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Page loader ─── */
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+/* ─── Animations ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+.animate-fadeUp { animation: fadeUp 0.6s ease both; }
+.animate-fadeIn { animation: fadeIn 0.4s ease both; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 769px) {
+  .hide-desktop { display: none !important; }
+}
+
+/* Quand on survole la carte (le parent), on anime l'image (l'enfant) */
+div:hover > .halwa-img-anim {
+  transform: scale(1.1) rotate(2deg); /* Zoom subtil + légère rotation */
+}
+
+/* Quand on survole la carte, on fait apparaître le voile */
+div:hover > .halwa-overlay-anim {
+  opacity: 1;
+}
+@keyframes shinyBadge {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(242,167,187,0.15);
+  }
+  50% {
+    transform: scale(1.05);
+    /* Effet d'éclat lumineux au milieu de l'animation */
+    box-shadow: 0 4px 20px rgba(201,160,106,0.3); 
+    border-color: var(--gold);
+  }
+}
+/* 1. L'animation de flottaison (Haut/Bas) */
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); } /* Le gâteau monte de 10px */
+}
+
+/* 2. L'effet de brillance qui traverse l'image */
+.shimmer-effect {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: shine 6s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+
+/* 3. Optionnel : un petit effet au survol pour stopper l'anim */
+.halwa-floating-card:hover {
+  animation-play-state: paused; /* Le gâteau s'arrête de flotter quand on le regarde */
+  border-color: var(--rose);
+  z-index: 10;
+}
