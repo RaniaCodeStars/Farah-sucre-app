@@ -26,6 +26,14 @@ export default function Navbar({ onCartOpen }) {
   }, [])
 
   useEffect(() => { setMenuOpen(false) }, [location])
+  // Ajoute ce hook en haut de ton composant Navbar
+const [isMobile, setIsMobile] = useState(window.innerWidth < 480)
+
+useEffect(() => {
+  const fn = () => setIsMobile(window.innerWidth < 480)
+  window.addEventListener('resize', fn)
+  return () => window.removeEventListener('resize', fn)
+}, [])
 
   return (
     <>
@@ -41,52 +49,54 @@ export default function Navbar({ onCartOpen }) {
         transition: 'all 0.3s ease',
       }}>
 
-        {/* Logo */}
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
+       <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 7 : 10, textDecoration: 'none', flexShrink: 0 }}>
+  
+  {/* Cercle logo — plus petit sur mobile */}
   <div style={{
-    width: scrolled ? 42 : 50, // Un peu plus grand pour que le logo soit lisible
-    height: scrolled ? 42 : 50,
+    width:  isMobile ? 32 : scrolled ? 36 : 42,
+    height: isMobile ? 32 : scrolled ? 36 : 42,
     borderRadius: '50%',
-    background: 'white', // Fond blanc pour faire ressortir le logo
+    background: 'white',
     border: '1.5px solid var(--border-strong)',
-    display: 'flex', 
-    alignItems: 'center', 
-    justifyContent: 'center',
-    overflow: 'hidden', // Pour que le logo ne dépasse pas du cercle
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    overflow: 'hidden', flexShrink: 0,
+    transition: 'all 0.3s',
     boxShadow: scrolled ? 'var(--shadow-sm)' : 'none',
   }}>
-    <img 
-      src="/images/logoF.png" 
-      alt="Farah Sucré Logo" 
-      style={{ 
-        width: '80%', // On laisse un peu de marge interne
-        height: '80%', 
-        objectFit: 'contain' 
-      }} 
+    <img
+      src="/images/logoF.png"
+      alt="Farah Sucré Logo"
+      style={{ width: '82%', height: '82%', objectFit: 'contain' }}
     />
   </div>
-  
-  <div>
+
+  <div style={{ minWidth: 0 }}>
+    {/* Nom — taille réduite sur mobile */}
     <div style={{
       fontFamily: 'Playfair Display, serif',
-      fontWeight: 600, 
-      fontSize: scrolled ? 17 : 20,
-      color: 'var(--rose-dark)', 
+      fontWeight: 600,
+      fontSize: isMobile ? 14 : scrolled ? 16 : 19,
+      color: 'var(--rose-dark)',
       lineHeight: 1.1,
-      transition: 'all 0.3s',
+      transition: 'font-size 0.3s',
+      whiteSpace: 'nowrap',
     }}>
       Farah Sucré
     </div>
-    <div style={{ 
-      fontSize: 10, 
-      letterSpacing: '0.18em', 
-      color: 'var(--ink-muted)', 
-      textTransform: 'uppercase',
-      marginTop: 2
-    }}>
-      Votre meilleur choix
-    </div>
+
+    {/* Slogan — masqué sur mobile pour gagner de la place */}
+    {!isMobile && (
+      <div style={{
+        fontSize: 9,
+        letterSpacing: '0.16em',
+        color: 'var(--ink-muted)',
+        textTransform: 'uppercase',
+        marginTop: 2,
+        whiteSpace: 'nowrap',
+      }}>
+        Votre meilleur choix
+      </div>
+    )}
   </div>
 </Link>
 
