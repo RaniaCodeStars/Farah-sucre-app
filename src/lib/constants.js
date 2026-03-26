@@ -14,17 +14,32 @@ export const ORDER_STATUS_FLOW = [
 
 import baklawaImg from '/images/baklawa.png'
 export const HALWA_TYPES = {
-  traditionnels: { 
-    label: 'Traditionnels', 
-    image: 'images/tcharek3aryan.png'
+  // 1. LE PRESTIGE (3rayech, M'khabez, K3ik3at)
+  prestige: { 
+    label: 'Prestige & Fêtes — حلويات الأفراح', 
+    image: '/images/3rayesh1.png', // Mets une belle photo de 3rayech ou K3ik3at
+    description: 'L’élégance pour vos grands événements.'
   },
-  sablees: { 
-    label: 'Sablées', 
-    image: '/images/box2.png' 
+
+  // 2. LE MIEL (Baklawa, Makrout, Samsa)
+  mo3assalat: { 
+    label: 'Tradition & Miel — حلويات معسلة', 
+    image: '/images/makrout.png',
+    description: 'Le goût authentique du terroir.'
   },
-  moa3ssalat: { 
-    label: "Mo3assalat", 
-    image: '/images/makrout.png' 
+
+  // 3. L'ARTISTIQUE (Les Fruits, Kefta)
+  artistique: { 
+    label: 'Art & Modelage — فن تشكيل اللوز', 
+    image: '/images/khokh.png',
+    description: 'La pâtisserie qui ressemble à de l’art.'
+  },
+
+  // 4. LE QUOTIDIEN (Sablés, Bniwen, Ghribia)
+  douceurs: { 
+    label: 'Pause Café — حلويات جافة', 
+    image: '/images/box2.png',
+    description: 'Pour vos moments de gourmandise simple.'
   },
 }
 

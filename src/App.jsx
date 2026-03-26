@@ -42,6 +42,7 @@ function AppContent() {
           <AdminRoute><Admin /></AdminRoute>
         } />
       </Routes>
+      <Avis />
 
       <Footer />
 

@@ -384,7 +384,7 @@ export default function Home() {
   <div className="container">
     <div style={{ textAlign: 'center', marginBottom: 'clamp(32px,5vw,52px)' }}>
       <div className="section-label">Nos créations</div>
-      <h2 className="section-title">Trois familles de <em>halwas</em></h2>
+      <h2 className="section-title">Notre familles de <em>halwas</em></h2>
     </div>
 
     <div style={{
