@@ -17,6 +17,11 @@ import MonCompte   from './pages/MonCompte'
 import Admin       from './pages/Admin'
 import Avis        from './pages/Avis'
 import { Livraison, Contact } from './pages/LivraisonContact'
+// Dans App.jsx, importe la nouvelle page
+import AdminCalendar from './pages/AdminCalendar'
+
+// Dans tes <Routes>
+
 
 function AppContent() {
   const [cartOpen, setCartOpen] = useState(false)
@@ -41,6 +46,7 @@ function AppContent() {
         <Route path="/admin" element={
           <AdminRoute><Admin /></AdminRoute>
         } />
+        <Route path="/admin/calendar" element={<AdminCalendar />} />
       </Routes>
       <Avis />
 
